@@ -1,16 +1,18 @@
 data "terraform_remote_state" "vpc" {
-    backend = "s3"
-    config {
-        bucket = "hashicorp-rosemary"
-        key = "networking/dev"
-        region = "us-east-1"
-    }
+  backend = "s3"
+
+  config {
+    bucket = "${var.networking_bucket}"
+    key    = "${var.networking_key}"
+    region = "${var.networking_bucket_region}"
+  }
 }
 
 module "sns" {
   source = "./sns"
 
   account_num = "${var.account_num}"
+  region      = "${var.region}"
 }
 
 module "elasti_cache" {

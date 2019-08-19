@@ -7,3 +7,8 @@ plan:
 
 apply:
 	terraform-0.7.13 apply -var-file=dev.tfvars
+
+clean:
+	aws s3 rm s3://hashicorp-rosemary/application/dev
+	rm -rf .terraform
+	rm -f terraform.tfstate*

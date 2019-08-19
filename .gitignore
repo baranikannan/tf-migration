@@ -91,3 +91,5 @@ ENV/
 .idea/
 
 application/*.tfvars
+terraform.tfstate*
+bin/

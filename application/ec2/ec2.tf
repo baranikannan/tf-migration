@@ -33,7 +33,8 @@ resource "aws_instance" "web" {
   subnet_id              = "${var.aws_subnet_public_id}"
   instance_type          = "t2.micro"
   key_name               = "${aws_key_pair.deployment.id}"
-  user_data              = <<EOF
+
+  user_data = <<EOF
 echo "hi"
 ls
 EOF
